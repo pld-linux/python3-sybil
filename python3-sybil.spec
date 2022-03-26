@@ -7,7 +7,7 @@ Summary:	Automated testing for the examples in your documentation
 Summary(pl.UTF-8):	Automatyczne testowanie dla przykładów w dokumentacji
 Name:		python3-sybil
 Version:	3.0.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/sybil/
