@@ -1,24 +1,27 @@
 #
 # Conditional build:
-%bcond_without	doc	# Sphinx documentation
-%bcond_without	tests	# unit tests
+%bcond_with	doc	# Sphinx documentation (not in sdist)
+%bcond_with	tests	# unit tests (tests.helpers missing in sdist)
 
 Summary:	Automated testing for the examples in your documentation
 Summary(pl.UTF-8):	Automatyczne testowanie dla przykładów w dokumentacji
 Name:		python3-sybil
-Version:	3.0.1
+Version:	5.0.3
 Release:	1
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/sybil/
 Source0:	https://files.pythonhosted.org/packages/source/s/sybil/sybil-%{version}.tar.gz
-# Source0-md5:	1d9ebc5b45f13284d09e3ccab0419cdc
+# Source0-md5:	02d6c90cb760e6c755734185a71c0990
 URL:		https://pypi.org/project/sybil/
-BuildRequires:	python3-modules >= 1:3.6
+BuildRequires:	python3-modules >= 1:3.7
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-pytest >= 6.2.0
+BuildRequires:	python3-myst_parser
+BuildRequires:	python3-pytest >= 7.1.0
 BuildRequires:	python3-pytest-cov
+BuildRequires:	python3-seedir
+BuildRequires:	python3-testfixtures
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -26,7 +29,8 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	python3-furo
 BuildRequires:	sphinx-pdg-3
 %endif
-Requires:	python3-modules >= 1:3.6
+Requires:	python3-modules >= 1:3.7
+Obsoletes:	python3-sybil-apidocs < 5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
